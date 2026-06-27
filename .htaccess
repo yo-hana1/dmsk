@@ -1,0 +1,12 @@
+# e:\dmsk 29-4-26\.htaccess – Apache URL Rewriting untuk Clean URLs
+RewriteEngine On
+
+# Izinkan akses langsung ke file/direktori fisik
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Redirect URL tanpa ekstensi .php ke berkas .php jika tersedia
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php [NC,L]
